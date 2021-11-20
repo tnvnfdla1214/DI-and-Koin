@@ -229,11 +229,15 @@ val appModule = module {
 
 }
 ```
+Application()은 앱 전역에서 선언하는것은 다 선언합니다. 예를 들면 SharePreference가 있습니다.
+
 val appModule = module{} 로 사용할 모듈들 정의합니다. single로 Engine을 생성하고, factory로 Car를 생성합니다. 이때 특이한점은 Car의 인자값으로 get()를 이용한다는 것 입니다.
 
 get()는 상기 Car Class에서 정의한 매개변수(Engine)를 찾아서 자동으로 매핑시켜 줍니다. 아주 편하죠? 이때 인자값이 다르거나, 매개변수 값이 다르면 컴파일 오류가 나기때문에 런타임 오류는 걱정하지 않으셔도 됩니다.
 
 ##### *single은 싱글톤으로 객체를 생성하며, factory는 새객체를 생성합니다. 나눈 이유는 여러가지 도메인이 있다는것을 보여주기 위함이며 필요에 의해서 사용하면 되겠습니다. ex> repository는 single로 생성, viewmodel은 factory로 생성*
+
+싱글톤은 대부분 무거운 친구이면 선언을 합니다.
 
 이렇게 만들어진 appModule은 Application에서 startKoin{}을 통해서 주입시켜 줍니다. startKoin은 설명안해도 느낌 오시지 않나요? Koin을 사용하겠다 이런 뜻이며 사용시 필요한 내용들을 넣어주면 됩니다.(context, log, modules 등등)
 
